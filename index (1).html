@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>背单词 - 极简模式</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 顶部导航 -->
+        <nav class="nav">
+            <div class="logo">📚 背单词</div>
+            <div class="nav-tabs">
+                <button class="tab active" data-tab="review">今日复习</button>
+                <button class="tab" data-tab="learn">新词学习</button>
+                <button class="tab" data-tab="words">词库</button>
+            </div>
+        </nav>
+
+        <!-- 今日复习页面 -->
+        <div class="page active" id="page-review">
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-num" id="review-count">0</div>
+                    <div class="stat-label">待复习</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-num" id="completed-count">0</div>
+                    <div class="stat-label">已完成</div>
+                </div>
+            </div>
+
+            <div class="card-container" id="review-card">
+                <div class="empty-state">
+                    <div class="empty-icon">🎉</div>
+                    <p>今日复习已完成！</p>
+                    <button class="btn btn-primary" onclick="showPage('learn')">去学习新词</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 新词学习页面 -->
+        <div class="page" id="page-learn">
+            <div class="mode-selector">
+                <button class="mode-btn active" data-mode="simple">极简模式</button>
+                <button class="mode-btn" data-mode="methods">多方法模式</button>
+            </div>
+
+            <!-- 极简模式 -->
+            <div class="learn-mode active" id="mode-simple">
+                <div class="card-container" id="learn-card">
+                    <div class="empty-state">
+                        <div class="empty-icon">✨</div>
+                        <p>暂无新词，先导入词库吧</p>
+                        <button class="btn btn-primary" onclick="importDefaultWords()">导入默认词库</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 多方法模式 -->
+            <div class="learn-mode" id="mode-methods">
+                <div class="methods-grid">
+                    <div class="method-card" data-method="scene">
+                        <div class="method-icon">🎬</div>
+                        <div class="method-name">场景记忆</div>
+                        <div class="method-desc">在例句和场景中记忆</div>
+                    </div>
+                    <div class="method-card" data-method="fill">
+                        <div class="method-icon">✏️</div>
+                        <div class="method-name">挖空填空</div>
+                        <div class="method-desc">上下文推断练习</div>
+                    </div>
+                    <div class="method-card" data-method="choice">
+                        <div class="method-icon">🎯</div>
+                        <div class="method-name">选择题</div>
+                        <div class="method-desc">四选一强化记忆</div>
+                    </div>
+                    <div class="method-card" data-method="dictation">
+                        <div class="method-icon">🎧</div>
+                        <div class="method-name">听写模式</div>
+                        <div class="method-desc">听说结合记忆</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 词库页面 -->
+        <div class="page" id="page-words">
+            <div class="words-header">
+                <div class="total-words">共 <span id="total-count">0</span> 个单词</div>
+                <button class="btn btn-secondary" onclick="importDefaultWords()">导入默认词库</button>
+            </div>
+            <div class="word-list" id="word-list">
+                <!-- 单词列表 -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 学习卡片模板 -->
+    <template id="word-card-template">
+        <div class="word-card">
+            <div class="word-front">
+                <div class="word-text"></div>
+                <div class="word-phonetic"></div>
+                <div class="hint">点击显示释义</div>
+            </div>
+            <div class="word-back">
+                <div class="word-meaning"></div>
+                <div class="word-example"></div>
+                <div class="actions">
+                    <button class="btn btn-wrong" data-result="wrong">😵 不认识</button>
+                    <button class="btn btn-vague" data-result="vague">😕 模糊</button>
+                    <button class="btn btn-correct" data-result="correct">😊 认识</button>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <script src="app.js"></script>
+</body>
+</html>

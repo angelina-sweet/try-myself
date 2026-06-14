@@ -1,0 +1,395 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #f5f5f5;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* 导航 */
+.nav {
+    background: white;
+    border-radius: 16px;
+    padding: 16px 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: #333;
+}
+
+.nav-tabs {
+    display: flex;
+    gap: 8px;
+}
+
+.tab {
+    flex: 1;
+    padding: 10px 16px;
+    border: none;
+    background: #f0f0f0;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s;
+}
+
+.tab:hover {
+    background: #e0e0e0;
+}
+
+.tab.active {
+    background: #4CAF50;
+    color: white;
+}
+
+/* 页面 */
+.page {
+    display: none;
+}
+
+.page.active {
+    display: block;
+}
+
+/* 统计 */
+.stats {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.stat-item {
+    flex: 1;
+    background: white;
+    border-radius: 16px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.stat-num {
+    font-size: 36px;
+    font-weight: 700;
+    color: #4CAF50;
+}
+
+.stat-label {
+    font-size: 14px;
+    color: #999;
+    margin-top: 4px;
+}
+
+/* 卡片容器 */
+.card-container {
+    background: white;
+    border-radius: 20px;
+    min-height: 400px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+}
+
+/* 单词卡片 */
+.word-card {
+    padding: 40px 30px;
+    text-align: center;
+    cursor: pointer;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.word-front {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.word-text {
+    font-size: 42px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 12px;
+}
+
+.word-phonetic {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.hint {
+    font-size: 14px;
+    color: #999;
+    padding: 8px 20px;
+    background: #f5f5f5;
+    border-radius: 20px;
+}
+
+.word-back {
+    display: none;
+}
+
+.word-card.flipped .word-front {
+    display: none;
+}
+
+.word-card.flipped .word-back {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.word-meaning {
+    font-size: 24px;
+    color: #4CAF50;
+    font-weight: 600;
+    margin-bottom: 24px;
+}
+
+.word-example {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 40px;
+    padding: 0 20px;
+}
+
+.actions {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+    max-width: 400px;
+}
+
+.btn {
+    padding: 14px 24px;
+    border: none;
+    border-radius: 12px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.2s;
+    flex: 1;
+}
+
+.btn-wrong {
+    background: #ffebee;
+    color: #e53935;
+}
+
+.btn-wrong:hover {
+    background: #ffcdd2;
+}
+
+.btn-vague {
+    background: #fff8e1;
+    color: #fb8c00;
+}
+
+.btn-vague:hover {
+    background: #ffecb3;
+}
+
+.btn-correct {
+    background: #e8f5e9;
+    color: #43a047;
+}
+
+.btn-correct:hover {
+    background: #c8e6c9;
+}
+
+.btn-primary {
+    background: #4CAF50;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #45a049;
+}
+
+.btn-secondary {
+    background: #f0f0f0;
+    color: #666;
+}
+
+.btn-secondary:hover {
+    background: #e0e0e0;
+}
+
+/* 空状态 */
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+    padding: 40px;
+}
+
+.empty-icon {
+    font-size: 64px;
+    margin-bottom: 20px;
+}
+
+.empty-state p {
+    font-size: 16px;
+    color: #999;
+    margin-bottom: 24px;
+}
+
+/* 模式选择 */
+.mode-selector {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.mode-btn {
+    flex: 1;
+    padding: 14px;
+    border: 2px solid #e0e0e0;
+    background: white;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: all 0.2s;
+}
+
+.mode-btn.active {
+    border-color: #4CAF50;
+    background: #e8f5e9;
+    color: #4CAF50;
+}
+
+.learn-mode {
+    display: none;
+}
+
+.learn-mode.active {
+    display: block;
+}
+
+/* 多方法网格 */
+.methods-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.method-card {
+    background: white;
+    border-radius: 16px;
+    padding: 24px 16px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.method-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+}
+
+.method-icon {
+    font-size: 40px;
+    margin-bottom: 12px;
+}
+
+.method-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 4px;
+}
+
+.method-desc {
+    font-size: 13px;
+    color: #999;
+}
+
+/* 词库页面 */
+.words-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 0 4px;
+}
+
+.total-words {
+    font-size: 16px;
+    color: #666;
+}
+
+.total-words span {
+    font-weight: 600;
+    color: #4CAF50;
+}
+
+.word-list {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.word-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.word-item:last-child {
+    border-bottom: none;
+}
+
+.word-info h4 {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 4px;
+}
+
+.word-info p {
+    font-size: 13px;
+    color: #999;
+}
+
+.word-status {
+    font-size: 13px;
+    padding: 4px 12px;
+    border-radius: 12px;
+}
+
+.status-new {
+    background: #e3f2fd;
+    color: #1976d2;
+}
+
+.status-learning {
+    background: #fff3e0;
+    color: #f57c00;
+}
+
+.status-mastered {
+    background: #e8f5e9;
+    color: #388e3c;
+}
